@@ -5,7 +5,6 @@ import {BrowserRouter as Router,
         Route,
         Switch
 } from "react-router-dom";
-import * as firebase from "firebase";
 import './index.css';
 import Aboutus from "./Components/about";
 import Contactus from "./Components/contact";
@@ -13,34 +12,25 @@ import Finddonors from "./Components/finddonors";
 import Donateblood from "./Components/donateyourblood";
 import Login from "./Components/login";
 import Signup from "./Components/signup";
+import Home from "./Components/home";
 import registerServiceWorker from './registerServiceWorker';
-var config = {
-    apiKey: "AIzaSyBstq20vaaHs8DANRBIkbskHUHk-YWCDAo",
-    authDomain: "blooddonorapp-262c1.firebaseapp.com",
-    databaseURL: "https://blooddonorapp-262c1.firebaseio.com",
-    projectId: "blooddonorapp-262c1",
-    storageBucket: "blooddonorapp-262c1.appspot.com",
-    messagingSenderId: "253407415755"
-  };
-firebase.initializeApp(config);
-
-class Home extends Component{
+class Index extends Component{
 
   render(){
-    var styling={
-      color:"white",
-      fontSize:"20px",
-      fontFamily:"algerian"
-    }
-    var linkstyle={
-      fontSize:"20px",
-      fontFamily:"algerian",
-      color    :"white"
-    }
-    var dropdown={
-      fontSize:"15px",
-      fontFamily:"algerian"
-    }
+      var styling={
+        color:"white",
+        fontSize:"20px",
+        fontFamily:"algerian"
+      }
+      var linkstyle={
+        fontSize:"20px",
+        fontFamily:"algerian",
+        color    :"white"
+      }
+      var dropdown={
+        fontSize:"15px",
+        fontFamily:"algerian"
+      }
   return (
     <Router >
       <div>
@@ -62,9 +52,8 @@ class Home extends Component{
   				<Link className="navbar navbar-content" style={styling} to="/contactus">Contact Us</Link>
         </div>
         </nav>
-        <h1>You are at home page</h1>
         <Switch>
-
+          <Route exact path="/" component={Home}/>
           <Route  path="/login" component={Login}/>
           <Route  path="/signup" component={Signup}/>
           <Route  path="/aboutus" component={Aboutus}/>
@@ -77,5 +66,5 @@ class Home extends Component{
     )
   }
 }
-ReactDOM.render(<Home />,document.getElementById("root"));
+ReactDOM.render(<Index />,document.getElementById("root"));
 registerServiceWorker();

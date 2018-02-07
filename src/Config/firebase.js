@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import * as firebase from "firebase";
+import * as firebaseconfig from "firebase";
   var config = {
         apiKey: "AIzaSyBstq20vaaHs8DANRBIkbskHUHk-YWCDAo",
         authDomain: "blooddonorapp-262c1.firebaseapp.com",
@@ -8,5 +8,5 @@ import * as firebase from "firebase";
         storageBucket: "blooddonorapp-262c1.appspot.com",
         messagingSenderId: "253407415755"
       };
-    firebase.initializeApp(config);
-return firebase;    
+  var firebase=firebaseconfig.initializeApp(config);
+export default firebase;

@@ -41,13 +41,74 @@ class Donateblood extends Component {
         address:address,
         phoneno:phoneno,
       }
-      var firebaseref=firebase.database().ref("users").push().set(user).then(function(response){
-        console.log("successfully submitted the details");
+      if(bloodgroup==="A")
+      {
+        firebase.database().ref("users").child("A").push().set(user).then(function(response){
+            console.log("successfully Sign Up");
+            window.location="/";
+        }).catch(function(error){
+            console.log("error in saving");
+        });
+        firebase.database().ref("users").child("AB").push().set(user).then(function(response){
+            console.log("successfully Sign Up");
+            window.location="/";
+        }).catch(function(error){
+            console.log("error in saving");
+        });
+      }
+      else if(bloodgroup==="B")
+      {
+        firebase.database().ref("users").child("B").push().set(user).then(function(response){
+            console.log("successfully Sign Up");
+            window.location="/";
+        }).catch(function(error){
+            console.log("error in saving");
+        });
+        firebase.database().ref("users").child("AB").push().set(user).then(function(response){
+            console.log("successfully Sign Up");
+            window.location="/";
+        }).catch(function(error){
+            console.log("error in saving");
+        });
+      }
+      else if(bloodgroup==="O")
+      {
+        firebase.database().ref("users").child("O").push().set(user).then(function(response){
+            console.log("successfully Save in O");
 
-        window.location='/';
-      }).catch(function(error){
-        console.log("Error in submitting");
-      })
+        }).catch(function(error){
+          console.log("error in saving into O");
+        });;
+        firebase.database().ref("users").child("A").push().set(user).then(function(response){
+          console.log("successfully save to A");
+        }).catch(function(error){
+          console.log("error in saving A");
+        });
+        firebase.database().ref("users").child("B").push().set(user).then(function(response){
+          console.log("successfully save into B");
+            window.location="/";
+        }).catch(function(error){
+          console.log("error in saving B");
+
+        })
+        firebase.database().ref("users").child("AB").push().set(user).then(function(response){
+          console.log("successfully save into AB");
+            window.location="/";
+        }).catch(function(error){
+          console.log("error in saving AB");
+
+        })
+      }
+      else if(bloodgroup==="AB")
+      {
+        firebase.database().ref("users").child("AB").push().set(user).then(function(response){
+            console.log("successfully Sign Up");
+            window.location="/";
+        }).catch(function(error){
+            console.log("error in saving");
+        });;
+      }
+
     }
 
   }

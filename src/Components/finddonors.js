@@ -10,38 +10,95 @@ class Finddonors extends Component {
     var pleasewait=document.getElementById('pleasewait');
     pleasewait.innerHTML="<div class='alert alert-success' style='width:400px;font-size:20px'>Please Wait....</div>"
     var donorsdetail=document.getElementById('donors-detail');
-
     donorsdetail.innerHTML="<th>Sr No</th><th>Username</th><th>Email</th><th>Address</th><th>Blood Group</th><th>Phone Number</th>";
-    var firebaseref=firebase.database().ref("users");
-    firebaseref.on("value",getresponse,geterror);
-    function getresponse(response){
-      var values=response.val();
-      var keys=Object.keys(values);
-      for (let i=0;i<keys.length ;i++)
-      {
-        let t=keys[i];
-        console.log(values[t]);
-        var username=values[t].username;
-        var email   =values[t].email;
-        var address =values[t].address;
-        var phone   =values[t].phoneno;
-        var dbloodgroup=values[t].bloodgroup;
-        if(bloodgroup==="AB")
+        if(bloodgroup==="A")
         {
-        donorsdetail.innerHTML+="<tr><td>"+i+"</td><td>"+username+"</td><td>"+email+"</td><td>"+address+"</td><td>"+dbloodgroup+"</td><td>"+phone+"</td></tr>";
-        pleasewait.innerHTML="";
+            var ref=firebase.database().ref("users").child("A");
+            ref.on('value',getresponse,geterror);
+            function  getresponse(response){
+              var values=response.val();
+              var keys=Object.keys(values);
+              for(var i=0;i<keys.length ;i++){
+                var t=keys[i];
+                var username=values[t].username;
+                var email=values[t].email;
+                var address=values[t].address;
+                var phoneno=values[t].phoneno;
+                var bloodgroup=values[t].bloodgroup;
+                donorsdetail.innerHTML+="<td>"+i+"</td><td>"+username+"</td><td>"+email+"</td><td>"+address+"</td><td>"+phoneno+"</td><td>"+bloodgroup+"</td>";
+                pleasewait.innerHTML="";
+              }
+            }
+            function geterror(error){
+              console.log(error.message);
+            }
         }
-        else if(bloodgroup===dbloodgroup || dbloodgroup==="O"){
-          donorsdetail.innerHTML+="<tr><td>"+i+"</td><td>"+username+"</td><td>"+email+"</td><td>"+address+"</td><td>"+dbloodgroup+"</td><td>"+phone+"</td></tr>";
-          pleasewait.innerHTML="";
+        else if(bloodgroup==="B")
+        {
+          var ref=firebase.database().ref("users").child("B");
+          ref.on('value',getresponse,geterror);
+          function  getresponse(response){
+            var values=response.val();
+            var keys=Object.keys(values);
+            for(var i=0;i<keys.length ;i++){
+              var t=keys[i];
+              var username=values[t].username;
+              var email=values[t].email;
+              var address=values[t].address;
+              var phoneno=values[t].phoneno;
+              var bloodgroup=values[t].bloodgroup;
+              donorsdetail.innerHTML+="<td>"+i+"</td><td>"+username+"</td><td>"+email+"</td><td>"+address+"</td><td>"+phoneno+"</td><td>"+bloodgroup+"</td>";
+              pleasewait.innerHTML="";
+            }
+          }
+          function geterror(error){
+            console.log(error.message);
+          }
+        }
+        else if(bloodgroup==="O"){
+          var ref=firebase.database().ref("users").child("O");
+          ref.on('value',getresponse,geterror);
+          function  getresponse(response){
+            var values=response.val();
+            var keys=Object.keys(values);
+            for(var i=0;i<keys.length ;i++){
+              var t=keys[i];
+              var username=values[t].username;
+              var email=values[t].email;
+              var address=values[t].address;
+              var phoneno=values[t].phoneno;
+              var bloodgroup=values[t].bloodgroup;
+              donorsdetail.innerHTML+="<td>"+i+"</td><td>"+username+"</td><td>"+email+"</td><td>"+address+"</td><td>"+phoneno+"</td><td>"+bloodgroup+"</td>";
+              pleasewait.innerHTML="";
+            }
+          }
+          function geterror(error){
+            console.log(error.message);
+          }
+        }
+        else if(bloodgroup==="AB"){
+          var ref=firebase.database().ref("users").child("AB");
+          ref.on('value',getresponse,geterror);
+          function  getresponse(response){
+            var values=response.val();
+            var keys=Object.keys(values);
+            for(var i=0;i<keys.length ;i++){
+              var t=keys[i];
+              var username=values[t].username;
+              var email=values[t].email;
+              var address=values[t].address;
+              var phoneno=values[t].phoneno;
+              var bloodgroup=values[t].bloodgroup;
+              donorsdetail.innerHTML+="<td>"+i+"</td><td>"+username+"</td><td>"+email+"</td><td>"+address+"</td><td>"+phoneno+"</td><td>"+bloodgroup+"</td>";
+              pleasewait.innerHTML="";
+            }
+          }
+          function geterror(error){
+            console.log(error.message);
+          }
         }
       }
-    }
-    function geterror(error){
-      var message=error.message;
-      console.log(message);
-    }
-  }
+
   render(){
     return (
       <div>
